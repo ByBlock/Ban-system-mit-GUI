@@ -1,0 +1,47 @@
+options:
+	P: &8[&6NBan&8]
+	
+	
+command /NBan [<player>]:
+	permission: N.Orga
+	trigger:
+		if arg 1 is not set:
+			send "{@P} &bBitte verwende /NBan [Spieler]"
+		if arg 1 is set:
+			open hopper with 1 row named "{@P}" to player
+			wait 5 ticks
+			format slot 0 of player with dye_powder_red named "&cHacking" run to [make player execute "bn"]
+			format slot 1 of player with dye_powder_blue named "&cSpam" run to [make player execute "m"]
+			format slot 2 of player with dye_powder_cyan named "&cScamming" run to [make player execute "bnn"]
+			format slot 3 of player with dye_powder_black named "&cBeleitigung" run to [make player execute "mm"]
+			format slot 4 of player with dye_powder_lime named "&cRasismus" run to [make player execute "mmm"]
+			
+command /bn:
+	trigger:
+		make player execute command "tempban %player% 7 d Hacking/Clientmodifikation"
+		wait 1 seconds
+		send "{@P} &bDer spieler wurde für Hacking 7 Tage gebannt"
+		
+command /m:
+	trigger:
+		make player execute command "tempmute %player% 3 h Spamming"
+		wait 1 seconds
+		send "{@P} &bDer spieler wurde für Spamming 3 Stunden aus dem chat gemutet"
+		
+command /bnn:
+	trigger:
+		make player execute command "tempban %player% 5 h Scamming"
+		wait 1 seconds
+		send "{@P} &bDer spieler wurde für Scamming 5 Stunden gebannt"
+		
+command /mm:
+	trigger:
+		make player execute command "tempmute %player% 30 min Beleitigung"
+		wait 1 seconds
+		send "{@P} &bDer spieler wurde für Beleitigung 30 minuten aus dem chat gemutet"
+		
+command /mmm:
+	trigger:
+		make player execute command "tempmute %player% 7 d Rasismus"
+		wait 1 seconds
+		send "{@P} &bDer spieler wurde für Rasismus 7 Tage aus dem chat gemutet"
